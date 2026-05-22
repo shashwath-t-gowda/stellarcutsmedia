@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stellar Cuts Media | Video Editor & Motion Designer</title>
+    
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Load Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind Config & Custom CSS -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        cinematic: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0a0a0a',
+                            light: '#f5f5f5',
+                            accent: '#eab308', // Cinematic Gold
+                        }
+                    },
+                    backgroundImage: {
+                        'radial-glow': 'radial-gradient(circle at 50% 50%, rgba(234, 179, 8, 0.1) 0%, rgba(10, 10, 10, 1) 70%)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom styling for a cinematic feel */
+        body {
+            background-color: #0a0a0a;
+            color: #f5f5f5;
+            overflow-x: hidden;
+        }
+        
+        .text-glow {
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .hover-scale {
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .group:hover .hover-scale {
+            transform: scale(1.05);
+        }
+
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Cinematic Grain Overlay */
+        .grain-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 50;
+            opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+        
+        /* Formspree Success Message Logic */
+        [data-fs-success] { display: none; }
+        [data-fs-success][data-fs-form-submitted] { display: block; }
+        form[data-fs-form-submitted] { display: none; }
+    </style>
+</head>
+<body class="antialiased font-sans selection:bg-brand-accent selection:text-black">
+    <div class="grain-overlay"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-40 transition-all duration-300 py-6 px-8 md:px-16 flex justify-between items-center">
+        <div class="font-cinematic font-bold text-xl tracking-widest uppercase">
+            Stellar Cuts<span class="text-brand-accent">.</span>
+        </div>
+        <div class="hidden md:flex gap-8 text-sm font-medium tracking-wide">
+            <a href="#work" class="hover:text-brand-accent transition-colors">Work</a>
+            <a href="#impact" class="hover:text-brand-accent transition-colors">Impact</a>
+            <a href="#contact" class="hover:text-brand-accent transition-colors">Contact</a>
+        </div>
+        <a href="#contact" class="md:hidden text-lg hover:text-brand-accent transition-colors">
+            <i class="fa-regular fa-envelope"></i>
+        </a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-radial-glow">
+        <div class="absolute inset-0 z-0 opacity-20">
+            <!-- Simulated background video/texture element -->
+            <div class="w-full h-full bg-[url('https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=2071&auto=format&fit=crop')] bg-cover bg-center mix-blend-luminosity"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-brand-dark/80 to-brand-dark"></div>
+        </div>
+
+        <div class="relative z-10 text-center px-6 max-w-5xl mx-auto flex flex-col items-center">
+            <p class="font-cinematic tracking-[0.3em] text-brand-accent text-sm md:text-base font-semibold mb-6 uppercase fade-in-up">
+                Video Editor & Motion Designer
+            </p>
+            <h1 class="font-cinematic font-black text-5xl md:text-7xl lg:text-8xl tracking-tight uppercase leading-[0.9] text-glow mb-8 fade-in-up" style="transition-delay: 100ms;">
+                Elevating <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-300 to-gray-500">Brand Narratives</span>
+            </h1>
+            <p class="text-gray-400 text-lg md:text-xl font-light max-w-2xl leading-relaxed mb-12 fade-in-up" style="transition-delay: 200ms;">
+                Partnering with ambitious startups and modern brands to craft high-retention podcasts, talking-head content, and dynamic motion graphics.
+            </p>
+            <a href="#work" class="group relative inline-flex items-center justify-center px-8 py-4 font-semibold text-black bg-white rounded-full overflow-hidden transition-all hover:scale-105 fade-in-up" style="transition-delay: 300ms;">
+                <span class="absolute w-0 h-0 transition-all duration-500 ease-out bg-brand-accent rounded-full group-hover:w-56 group-hover:h-56"></span>
+                <span class="relative flex items-center gap-2">View My Work <i class="fa-solid fa-arrow-down text-sm"></i></span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Stats Banner -->
+    <section class="border-y border-white/10 bg-white/5 py-8 backdrop-blur-sm relative z-20">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-white/10">
+            <div class="fade-in-up">
+                <div class="text-3xl md:text-5xl font-cinematic font-bold text-white mb-2">3+</div>
+                <div class="text-xs md:text-sm text-gray-400 uppercase tracking-widest">Years Experience</div>
+            </div>
+            <div class="fade-in-up" style="transition-delay: 100ms;">
+                <div class="text-3xl md:text-5xl font-cinematic font-bold text-white mb-2">20+</div>
+                <div class="text-xs md:text-sm text-gray-400 uppercase tracking-widest">Premium Projects</div>
+            </div>
+            <div class="fade-in-up" style="transition-delay: 200ms;">
+                <div class="text-3xl md:text-5xl font-cinematic font-bold text-brand-accent mb-2">1M+</div>
+                <div class="text-xs md:text-sm text-gray-400 uppercase tracking-widest">Views Generated</div>
+            </div>
+            <div class="fade-in-up" style="transition-delay: 300ms;">
+                <div class="text-3xl md:text-5xl font-cinematic font-bold text-brand-accent mb-2">41K+</div>
+                <div class="text-xs md:text-sm text-gray-400 uppercase tracking-widest">Subs Grown</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Work Section -->
+    <section id="work" class="py-32 px-6 md:px-12 relative z-20 bg-brand-dark">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-20 fade-in-up">
+                <div>
+                    <h2 class="font-cinematic text-4xl md:text-6xl font-black uppercase tracking-tight text-white">Selected Works</h2>
+                    <p class="text-gray-400 mt-4 max-w-md text-lg">A curated look at my highest-converting edits for brands and startups.</p>
+                </div>
+            </div>
+
+            <div class="space-y-32">
+                <!-- Project 1: Mundhe Banni -->
+                <div class="group grid grid-cols-1 lg:grid-cols-12 gap-12 items-center fade-in-up">
+                    <div class="lg:col-span-8 overflow-hidden rounded-2xl relative bg-neutral-900 aspect-video shadow-2xl shadow-brand-accent/5">
+                        <!-- REPLACE "YOUR_VIDEO_ID_HERE" with the actual YouTube ID (e.g. dQw4w9WgXcQ) -->
+                        <iframe class="w-full h-full absolute inset-0" src="https://www.youtube.com/embed/_FsxudS_S1k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="lg:col-span-4 flex flex-col justify-center">
+                        <div class="flex items-center gap-3 mb-4">
+                            <img src="mundhe_banni.png" alt="Mundhe Banni" class="w-8 h-8 rounded-full border border-white/20 object-cover">
+                            <div class="text-brand-accent text-sm font-bold tracking-widest uppercase">Mundhe Banni Podcast</div>
+                        </div>
+                        <h3 class="text-3xl md:text-4xl font-cinematic font-bold text-white mb-4 leading-tight">Dr. Bro's Untold Story</h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed text-sm md:text-base">
+                            Lead editor for the past 8 months. Brought cinematic pacing and engaging motion graphics that helped scale the channel's audience massively.
+                        </p>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-white/5 border border-white/10 p-4 rounded-xl">
+                                <h4 class="text-[10px] text-gray-500 uppercase tracking-widest mb-1">Channel Growth</h4>
+                                <div class="text-2xl text-white font-cinematic font-bold">7K <i class="fa-solid fa-arrow-right text-brand-accent text-sm mx-1"></i> 48K</div>
+                                <div class="text-xs text-gray-400 mt-1">Subscribers</div>
+                            </div>
+                            <div class="bg-white/5 border border-white/10 p-4 rounded-xl">
+                                <h4 class="text-[10px] text-gray-500 uppercase tracking-widest mb-1">Top Video</h4>
+                                <div class="text-2xl text-white font-cinematic font-bold">875K+</div>
+                                <div class="text-xs text-gray-400 mt-1">Views & 28K+ Likes</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Groww Kannada -->
+                <div class="group grid grid-cols-1 lg:grid-cols-12 gap-12 items-center fade-in-up">
+                    <div class="lg:col-span-8 lg:order-2 overflow-hidden rounded-2xl relative bg-neutral-900 aspect-video shadow-2xl shadow-brand-accent/5">
+                        <img src="groww_channel.png" alt="Groww Kannada Channel" class="w-full h-full object-cover absolute inset-0">
+                    </div>
+                    <div class="lg:col-span-4 lg:order-1 flex flex-col justify-center">
+                         <div class="flex items-center gap-3 mb-4">
+                            <img src="groww_kannada.png" alt="Groww Kannada" class="w-8 h-8 rounded-full border border-white/20 object-cover">
+                            <div class="text-brand-accent text-sm font-bold tracking-widest uppercase">Groww Kannada</div>
+                        </div>
+                        <h3 class="text-3xl md:text-4xl font-cinematic font-bold text-white mb-4 leading-tight">High-End Finance Content</h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed text-sm md:text-base">
+                            Recently partnered with Groww Kannada to deliver premium, high-retention edits. Focusing on clean, corporate, and engaging financial content for an established viewer base.
+                        </p>
+                        <div class="bg-white/5 border border-white/10 p-6 rounded-xl">
+                            <h4 class="text-xs text-gray-500 uppercase tracking-widest mb-3">Client Audience</h4>
+                            <div class="flex items-center gap-4">
+                                <div class="text-4xl text-white font-cinematic font-bold">~200K</div>
+                                <div class="text-sm text-gray-400">Subscribers demanding top-tier production quality.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-32 relative overflow-hidden bg-brand-dark">
+        <!-- Background elements -->
+        <div class="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1620121692029-d088224ddc74?q=80&w=2032&auto=format&fit=crop')] bg-cover bg-center"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/90 to-transparent"></div>
+        
+        <div class="max-w-4xl mx-auto px-6 relative z-10 text-center fade-in-up">
+            <h2 class="font-cinematic text-5xl md:text-7xl font-black uppercase text-white mb-8">Ready to Scale?</h2>
+            <p class="text-gray-400 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed">
+                If you are a brand or startup looking for high-end video editing and motion design that actually drives results, let's talk.
+            </p>
+            
+            <!-- Formspree Success Message -->
+            <div data-fs-success class="bg-brand-accent/10 border border-brand-accent/30 text-brand-accent p-8 rounded-xl text-center mb-12 max-w-2xl mx-auto backdrop-blur-sm">
+                <h4 class="font-cinematic text-2xl font-bold mb-2">Message Sent Successfully</h4>
+                <p class="text-gray-300">Thanks for reaching out! I'll get back to you shortly.</p>
+            </div>
+
+            <!-- Formspree Form -->
+            <form id="contact-form" class="max-w-2xl mx-auto text-left space-y-6 mb-16 relative z-20">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-400 mb-2 uppercase tracking-widest">Name</label>
+                        <input type="text" id="name" name="name" required class="w-full bg-white/5 border border-white/10 rounded-lg p-4 text-white focus:outline-none focus:border-brand-accent transition-colors backdrop-blur-sm" data-fs-field>
+                        <span data-fs-error="name" class="text-red-500 text-xs mt-1 block"></span>
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-400 mb-2 uppercase tracking-widest">Email</label>
+                        <input type="email" id="email" name="email" required class="w-full bg-white/5 border border-white/10 rounded-lg p-4 text-white focus:outline-none focus:border-brand-accent transition-colors backdrop-blur-sm" data-fs-field>
+                        <span data-fs-error="email" class="text-red-500 text-xs mt-1 block"></span>
+                    </div>
+                </div>
+                <div>
+                    <label for="message" class="block text-sm font-medium text-gray-400 mb-2 uppercase tracking-widest">Project Details</label>
+                    <textarea id="message" name="message" rows="4" required class="w-full bg-white/5 border border-white/10 rounded-lg p-4 text-white focus:outline-none focus:border-brand-accent transition-colors resize-none backdrop-blur-sm" data-fs-field></textarea>
+                    <span data-fs-error="message" class="text-red-500 text-xs mt-1 block"></span>
+                </div>
+                <button type="submit" data-fs-submit-btn class="w-full bg-white text-black font-cinematic font-bold uppercase tracking-widest py-4 rounded-lg hover:bg-brand-accent transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
+                    Send Message
+                </button>
+            </form>
+            
+            <div class="text-center mb-8">
+                <span class="text-sm text-gray-500 tracking-widest uppercase mb-4 block">Or drop me an email directly</span>
+                <a href="mailto:shashwath.stg@gmail.com" class="text-xl md:text-3xl font-cinematic font-bold text-white border-b-2 border-transparent hover:border-brand-accent transition-colors duration-300">
+                    shashwath.stg@gmail.com
+                </a>
+            </div>
+            
+            <div class="mt-16 pt-16 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="font-cinematic font-bold text-xl tracking-widest uppercase">
+                    Stellar Cuts<span class="text-brand-accent">.</span>
+                </div>
+                <div class="text-gray-500 text-sm">
+                    &copy; <span id="year"></span> Stellar Cuts Media. All rights reserved.
+                </div>
+                <div class="flex gap-6">
+                    <a href="#" class="text-gray-500 hover:text-white transition-colors"><i class="fa-brands fa-linkedin text-xl"></i></a>
+                    <a href="#" class="text-gray-500 hover:text-white transition-colors"><i class="fa-brands fa-instagram text-xl"></i></a>
+                    <a href="#" class="text-gray-500 hover:text-white transition-colors"><i class="fa-brands fa-vimeo text-xl"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Navbar background change on scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-brand-dark/90', 'backdrop-blur-md', 'border-b', 'border-white/10');
+                navbar.classList.remove('py-6');
+                navbar.classList.add('py-4');
+            } else {
+                navbar.classList.remove('bg-brand-dark/90', 'backdrop-blur-md', 'border-b', 'border-white/10');
+                navbar.classList.add('py-6');
+                navbar.classList.remove('py-4');
+            }
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // Run once
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-up').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+
+    <!-- Formspree Vanilla JS Scripts -->
+    <script>
+        window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+        formspree('initForm', { formElement: '#contact-form', formId: 'mpqndvnb' });
+    </script>
+    <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+</body>
+</html>
